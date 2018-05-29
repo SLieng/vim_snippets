@@ -13,8 +13,8 @@ function! deoppet#mapping#_init() abort
       \ <SID>trigger('jump_backward')
 
   " Test
-  imap <C-k>  <Plug>(deoppet_expand)
-  imap <C-z>  <Plug>(deoppet_jump_forward)
+  imap <C-Q>  <Plug>(deoppet_expand)
+  imap <C-T>  <Plug>(deoppet_jump_forward)
 endfunction
 
 function! s:pre_trigger() abort
