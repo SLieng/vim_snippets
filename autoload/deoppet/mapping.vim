@@ -17,6 +17,12 @@ function! deoppet#mapping#_init() abort
   imap <C-T>  <Plug>(deoppet_jump_forward)
 endfunction
 
+
+imap <C-Q>  <Plug>(deoppet_expand)
+imap <C-X>  <Plug>(deoppet_expand)
+imap <C-Y>  <Plug>(deoppet_expand)
+imap <C-T>  <Plug>(deoppet_jump_forward)
+
 function! s:pre_trigger() abort
   let cur_text = deoppet#util#_get_cur_text()
 
@@ -33,8 +39,12 @@ endfunction
 function! s:trigger(function) abort
   let [cur_text, col, expr] = s:pre_trigger()
 
+  echo 'adfsafadsfasf'
+
   let expr .= printf("\<ESC>:call %s(%s)\<CR>",
         \ '_deoppet_mapping', string(a:function))
 
   return expr
 endfunction
+
+call _deoppet_initialize()

@@ -17,7 +17,7 @@ class Mapping():
         return debug(self._vim, expr)
 
     def clear(self):
-        self._ns = self._vim.call('nvim_init_mark_ns', 'deoppet')
+        self._ns = self._vim.call('Nvim_init_mark_ns', 'deoppet')
         self._vim.current.buffer.vars['deoppet_marks'] = []
 
     def mapping(self, name):
@@ -60,10 +60,10 @@ class Mapping():
         col = self._vim.call('len', cur_text + snippet['text'])
 
         ids = []
-        self._ns = self._vim.call('nvim_init_mark_ns', 'deoppet')
+        self._ns = self._vim.call('Nvim_init_mark_ns', 'deoppet')
         for tabstop in snippet['tabstops']:
-            ids.append(self._vim.call('nvim_buf_set_mark',
-                                      buf.number, self._ns, '',
+            ids.append(self._vim.call('Nvim_buf_set_mark',
+                                      buf.number, self._ns, 0,  # 0 for self._ns
                                       tabstop['row'] + linenr,
                                       tabstop['col'] + 1))
         bvars['deoppet_marks'] = ids + bvars['deoppet_marks']
@@ -76,8 +76,8 @@ class Mapping():
             return
         buf = self._vim.current.buffer
         marks = bvars['deoppet_marks']
-        mark = self._vim.call('nvim_buf_lookup_mark',
-                              buf.number, self._ns, marks[0])
+        mark = self._vim.call('Nvim_buf_lookup_mark',
+                              buf.number, self._ns, marks[0])  # 0 for self._ns
         # Insert mode offset
         mark[2] -= 1
         next_text = buf[mark[1]-1][mark[2]:]
