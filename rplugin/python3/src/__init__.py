@@ -5,7 +5,7 @@
 # ============================================================================
 
 import neovim
-from src.src import Deoppet
+from src.deoppet import Deoppet
 
 
 @neovim.plugin
