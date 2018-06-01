@@ -1,9 +1,3 @@
-# ============================================================================
-# FILE: snp.py
-# AUTHOR: Shougo Matsushita <Shougo.Matsu at gmail.com>
-# License: MIT license
-# ============================================================================
-
 from src.parser import Parser
 from src.mapping import Mapping
 from src.util import globruntime

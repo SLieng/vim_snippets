@@ -1,9 +1,3 @@
-# ============================================================================
-# FILE: mapping.py
-# AUTHOR: Shougo Matsushita <Shougo.Matsu at gmail.com>
-# License: MIT license
-# ============================================================================
-
 from src.util import debug
 
 

@@ -1,9 +1,3 @@
-# ============================================================================
-# FILE: util.py
-# AUTHOR: Shougo Matsushita <Shougo.Matsu at gmail.com>
-# License: MIT license
-# ============================================================================
-
 import glob
 import re
 

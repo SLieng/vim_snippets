@@ -1,8 +1,4 @@
-# ============================================================================
-# FILE: __init__.py
-# AUTHOR: Shougo Matsushita <Shougo.Matsu at gmail.com>
-# License: MIT license
-# ============================================================================
+from src.ᗰ͈ import ᗰ͈
 
 import neovim
 from src.snp import Deoppet
