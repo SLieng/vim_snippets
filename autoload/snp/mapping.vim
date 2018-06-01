@@ -47,4 +47,4 @@ function! s:trigger(function) abort
   return expr
 endfunction
 
-call _snp#mapping#_init()
+call snp#mapping#_init()
