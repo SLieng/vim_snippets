@@ -5,7 +5,7 @@
 # ============================================================================
 
 import neovim
-from src.deoppet import Deoppet
+from src.snp import Deoppet
 
 
 @neovim.plugin
@@ -14,15 +14,15 @@ class DeoppetHandlers(object):
     def __init__(self, vim):
         self._vim = vim
 
-    @neovim.function('_deoppet_initialize', sync=False)
+    @neovim.function('_snp_initialize', sync=False)
     def init_channel(self, args):
-        self._vim.vars['deoppet#_channel_id'] = self._vim.channel_id
-        self._deoppet = Deoppet(self._vim)
+        self._vim.vars['snp#_channel_id'] = self._vim.channel_id
+        self._snp = Deoppet(self._vim)
 
-    @neovim.function('_deoppet_mapping', sync=True)
+    @neovim.function('_snp_mapping', sync=True)
     def mapping(self, args):
-        self._deoppet.mapping(args[0])
+        self._snp.mapping(args[0])
 
-    @neovim.function('_deoppet_event', sync=True)
+    @neovim.function('_snp_event', sync=True)
     def event(self, args):
-        self._deoppet.event(args[0])
+        self._snp.event(args[0])

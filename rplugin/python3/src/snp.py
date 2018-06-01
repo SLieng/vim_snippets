@@ -1,5 +1,5 @@
 # ============================================================================
-# FILE: deoppet.py
+# FILE: snp.py
 # AUTHOR: Shougo Matsushita <Shougo.Matsu at gmail.com>
 # License: MIT license
 # ============================================================================
@@ -7,7 +7,7 @@
 from src.parser import Parser
 from src.mapping import Mapping
 from src.util import globruntime
-#~ from deoppet.util import debug
+#~ from snp.util import debug
 
 
 class Deoppet():
@@ -22,10 +22,10 @@ class Deoppet():
             #~ debug(self._vim, filename)
             with open(filename) as f:
                 self._snippets.update(self._parser.parse(f.read()))
-        self._vim.current.buffer.vars['deoppet_snippets'] = self._snippets
+        self._vim.current.buffer.vars['snp_snippets'] = self._snippets
 
-        self._vim.call('deoppet#mapping#_init')
-        self._vim.call('deoppet#handler#_init')
+        self._vim.call('snp#mapping#_init')
+        self._vim.call('snp#handler#_init')
 
     def mapping(self, name):
         return self._mapping.mapping(name)
