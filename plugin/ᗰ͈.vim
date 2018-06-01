@@ -20,4 +20,4 @@ function! Nvim_buf_lookup_mark(bufnr, ns, id)
     return nvim_buf_lookup_mark(a:bufnr, a:ns, a:id)
 endfunction
 
-call deoppet#mapping#_init()
+call snp#mapping#_init()
