@@ -4,9 +4,9 @@
 " License: MIT license
 "=============================================================================
 
-function! deoppet#handler#_init() abort
-  augroup deoppet
+function! snp#handler#_init() abort
+  augroup snp
     autocmd!
-    autocmd BufWritePost * call _deoppet_event('BufWritePost')
+    autocmd BufWritePost * call _snp_event('BufWritePost')
   augroup END
 endfunction

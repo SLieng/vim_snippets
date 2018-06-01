@@ -4,27 +4,27 @@
 " License: MIT license
 "=============================================================================
 
-function! deoppet#mapping#_init() abort
-  inoremap <silent><expr> <Plug>(deoppet_expand)
+function! snp#mapping#_init() abort
+  inoremap <silent><expr> <Plug>(snp_expand)
       \ <SID>trigger('expand')
-  inoremap <silent><expr> <Plug>(deoppet_jump_forward)
+  inoremap <silent><expr> <Plug>(snp_jump_forward)
       \ <SID>trigger('jump_forward')
-  inoremap <silent><expr> <Plug>(deoppet_jump_backward)
+  inoremap <silent><expr> <Plug>(snp_jump_backward)
       \ <SID>trigger('jump_backward')
 
   " Test
-  imap <C-Q>  <Plug>(deoppet_expand)
-  imap <C-T>  <Plug>(deoppet_jump_forward)
+  imap <C-Q>  <Plug>(snp_expand)
+  imap <C-T>  <Plug>(snp_jump_forward)
 endfunction
 
 
-imap <C-Q>  <Plug>(deoppet_expand)
-imap <C-X>  <Plug>(deoppet_expand)
-imap <C-Y>  <Plug>(deoppet_expand)
-imap <C-T>  <Plug>(deoppet_jump_forward)
+imap <C-Q>  <Plug>(snp_expand)
+imap <C-X>  <Plug>(snp_expand)
+imap <C-Y>  <Plug>(snp_expand)
+imap <C-T>  <Plug>(snp_jump_forward)
 
 function! s:pre_trigger() abort
-  let cur_text = deoppet#util#_get_cur_text()
+  let cur_text = snp#util#_get_cur_text()
 
   let col = col('.')
   let expr = ''
@@ -42,9 +42,9 @@ function! s:trigger(function) abort
   echo 'adfsafadsfasf'
 
   let expr .= printf("\<ESC>:call %s(%s)\<CR>",
-        \ '_deoppet_mapping', string(a:function))
+        \ '_snp_mapping', string(a:function))
 
   return expr
 endfunction
 
-call _deoppet_initialize()
+call _snp#mapping#_init()

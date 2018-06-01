@@ -4,18 +4,18 @@
 " License: MIT license
 "=============================================================================
 
-function! deoppet#util#_get_cur_text() abort
+function! snp#util#_get_cur_text() abort
   return
         \ (mode() ==# 'i' ? (col('.')-1) : col('.')) >= len(getline('.')) ?
         \      getline('.') :
         \      matchstr(getline('.'),
         \         '^.*\%' . col('.') . 'c' . (mode() ==# 'i' ? '' : '.'))
 endfunction
-function! deoppet#util#_get_next_text() abort "{{{
-  return getline('.')[len(deoppet#util#_get_cur_text()) :]
+function! snp#util#_get_next_text() abort "{{{
+  return getline('.')[len(snp#util#_get_cur_text()) :]
 endfunction"}}}
 
-function! deoppet#util#_get_cursor_snippet(snippets, cur_text) abort "{{{
+function! snp#util#_get_cursor_snippet(snippets, cur_text) abort "{{{
   let cur_word = matchstr(a:cur_text, '\S\+$')
   if cur_word !=# '' && has_key(a:snippets, cur_word)
       return cur_word
