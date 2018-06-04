@@ -20,7 +20,6 @@ endfunction
 
 imap <C-Q>  <Plug>(snp_expand)
 imap <C-X>  <Plug>(snp_expand)
-imap <C-Y>  <Plug>(snp_expand)
 imap <C-T>  <Plug>(snp_jump_forward)
 
 function! s:pre_trigger() abort
