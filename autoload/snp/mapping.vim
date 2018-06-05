@@ -14,14 +14,13 @@ function! snp#mapping#_init() abort
 
   " Test
   imap <C-Q>  <Plug>(snp_expand)
-  imap <C-T>  <Plug>(snp_jump_forward)
+  imap <C-Z>  <Plug>(snp_jump_forward)
 endfunction
 
 
 imap <C-Q>  <Plug>(snp_expand)
 imap <C-X>  <Plug>(snp_expand)
-imap <C-Y>  <Plug>(snp_expand)
-imap <C-T>  <Plug>(snp_jump_forward)
+imap <C-Z>  <Plug>(snp_jump_forward)
 
 function! s:pre_trigger() abort
   let cur_text = snp#util#_get_cur_text()
