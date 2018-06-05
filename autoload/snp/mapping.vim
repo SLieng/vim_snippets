@@ -1,9 +1,3 @@
-"=============================================================================
-" FILE: mapping.vim
-" AUTHOR:  Shougo Matsushita <Shougo.Matsu at gmail.com>
-" License: MIT license
-"=============================================================================
-
 function! snp#mapping#_init() abort
   inoremap <silent><expr> <Plug>(snp_expand)
       \ <SID>trigger('expand')
@@ -11,16 +5,7 @@ function! snp#mapping#_init() abort
       \ <SID>trigger('jump_forward')
   inoremap <silent><expr> <Plug>(snp_jump_backward)
       \ <SID>trigger('jump_backward')
-
-  " Test
-  imap <C-Q>  <Plug>(snp_expand)
-  imap <C-Z>  <Plug>(snp_jump_forward)
 endfunction
-
-
-imap <C-Q>  <Plug>(snp_expand)
-imap <C-X>  <Plug>(snp_expand)
-imap <C-Z>  <Plug>(snp_jump_forward)
 
 function! s:pre_trigger() abort
   let cur_text = snp#util#_get_cur_text()
