@@ -1,40 +1,39 @@
 import re
 
-class Parser:
 
-    def __init__(𝚵):
-        𝚵.lines = []
-        𝚵.linenr = 0
-        𝚵.line_max = 0
+class Parser():
 
-    def parse(𝚵, text):
-        return {
-                'xs': 'hello world'
-                }
-        𝚵.lines = text.splitlines()
-        𝚵.linenr = 0
-        𝚵.line_max = len(𝚵.lines)
+    def __init__(self):
+        self.lines = []
+        self.linenr = 0
+        self.line_max = 0
+        pass
+
+    def parse(self, text):
+        self.lines = text.splitlines()
+        self.linenr = 0
+        self.line_max = len(self.lines)
 
         snippets = {}
-        while 𝚵.linenr < 𝚵.line_max:
-            line = 𝚵.lines[𝚵.linenr]
+        while self.linenr < self.line_max:
+            line = self.lines[self.linenr]
             if re.search('^\s*#|^\s*$', line):
                 # Skip
-                𝚵.linenr += 1
+                self.linenr += 1
                 continue
             if not re.search('^\s*snippet\s+', line):
                 # Error
                 return {}
 
-            snippet = 𝚵.parse_one_snippet()
+            snippet = self.parse_one_snippet()
             if not snippet:
                 # Error
                 return {}
             snippets[snippet['trigger']] = snippet
         return snippets
 
-    def parse_one_snippet(𝚵):
-        line = 𝚵.lines[𝚵.linenr]
+    def parse_one_snippet(self):
+        line = self.lines[self.linenr]
         m = re.search('^\s*snippet\s+(.*)$', line)
         if not m:
             return {}
@@ -46,10 +45,10 @@ class Parser:
         snippet['tabstops'] = []
 
         # Parse the next line
-        while (𝚵.linenr + 1) < 𝚵.line_max:
-            𝚵.linenr += 1
+        while (self.linenr + 1) < self.line_max:
+            self.linenr += 1
 
-            line = 𝚵.lines[𝚵.linenr]
+            line = self.lines[self.linenr]
             m = re.search('^abbr\s+(\S+)', line)
             if m:
                 snippet['abbr'] = m.group(1)
@@ -73,7 +72,7 @@ class Parser:
 
             m = re.search('^\s+(.*)$', line)
             if m:
-                return 𝚵.parse_text(snippet)
+                return self.parse_text(snippet)
 
             # Error
             break
@@ -81,10 +80,10 @@ class Parser:
         # Error
         return {}
 
-    def parse_text(𝚵, snippet):
+    def parse_text(self, snippet):
         text_linenr = 0
-        while 𝚵.linenr < 𝚵.line_max:
-            line = 𝚵.lines[𝚵.linenr]
+        while self.linenr < self.line_max:
+            line = self.lines[self.linenr]
             m = re.search('^\s+(.*)$', line)
             if not m:
                 return snippet
@@ -92,18 +91,18 @@ class Parser:
             # Substitute tabstops
             line = m.group(1)
             while 1:
-                [tabstop, line] = 𝚵.parse_tabstop(line, text_linenr)
+                [tabstop, line] = self.parse_tabstop(line, text_linenr)
                 if not tabstop:
                     break
 
                 snippet['tabstops'].append(tabstop)
 
             snippet['text'] += line
-            𝚵.linenr += 1
+            self.linenr += 1
             text_linenr += 1
         return snippet
 
-    def parse_tabstop(𝚵, line, text_linenr):
+    def parse_tabstop(self, line, text_linenr):
         m = re.search('\${(\d+)}', line)
         if not m:
             return [{}, line]
