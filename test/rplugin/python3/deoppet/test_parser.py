@@ -1,6 +1,6 @@
 import sys
 print(sys.path)
-from deoppet.parser import Parser
+from snp.src.parser import Parser
 
 def test_parse_success():
     parser = Parser()
