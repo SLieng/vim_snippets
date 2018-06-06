@@ -7,7 +7,6 @@ from src.util import globruntime
 class Deoppet():
 
     def __init__(self, vim):
-        self._vim = vim
         self._parser = Parser()
         self._mapping = Mapping(self._vim)
         self._snippets = {}
