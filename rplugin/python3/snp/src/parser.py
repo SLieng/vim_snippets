@@ -9,6 +9,7 @@ class Parser:
     def parse(𝚵, c):
         ᴧ̲ = PLL.Ҁ͈ᴧ̲(c)
         snp̲ = {}
+
         for ᴧ in ᴧ̲:
             if re.search('^\s*#|^\s*$', ᴧ):
                 # Skip
