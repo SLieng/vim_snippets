@@ -1,41 +1,31 @@
 import re
 
+import itertools
+
+import PLL
+
 class Parser:
 
-    def __init__(𝚵):
-        𝚵.lines = []
-        𝚵.linenr = 0
-        𝚵.line_max = 0
-
-    def parse(𝚵, text):
-        return {
-                'xs': 'hello world'
-                }
-        𝚵.lines = text.splitlines()
-        𝚵.linenr = 0
-        𝚵.line_max = len(𝚵.lines)
-
-        snippets = {}
-        while 𝚵.linenr < 𝚵.line_max:
-            line = 𝚵.lines[𝚵.linenr]
-            if re.search('^\s*#|^\s*$', line):
+    def parse(𝚵, c):
+        ᴧ̲ = PLL.Ҁ͈ᴧ̲(c)
+        snp̲ = {}
+        for ᴧ in ᴧ̲:
+            if re.search('^\s*#|^\s*$', ᴧ):
                 # Skip
-                𝚵.linenr += 1
                 continue
-            if not re.search('^\s*snippet\s+', line):
+            if not re.search('^\s*snippet\s+', ᴧ):
                 # Error
                 return {}
 
-            snippet = 𝚵.parse_one_snippet()
+            snippet = 𝚵.parse_one_snippet(ᴧ, ᴧ̲)
             if not snippet:
                 # Error
                 return {}
-            snippets[snippet['trigger']] = snippet
-        return snippets
+            snp̲[snippet['trigger']] = snippet
+        return snp̲
 
-    def parse_one_snippet(𝚵):
-        line = 𝚵.lines[𝚵.linenr]
-        m = re.search('^\s*snippet\s+(.*)$', line)
+    def parse_one_snippet(𝚵, ᴧ, ᴧ̲):
+        m = re.search('^\s*snippet\s+(.*)$', ᴧ)
         if not m:
             return {}
 
@@ -46,34 +36,31 @@ class Parser:
         snippet['tabstops'] = []
 
         # Parse the next line
-        while (𝚵.linenr + 1) < 𝚵.line_max:
-            𝚵.linenr += 1
-
-            line = 𝚵.lines[𝚵.linenr]
-            m = re.search('^abbr\s+(\S+)', line)
+        for ᴧ in ᴧ̲:
+            m = re.search('^abbr\s+(\S+)', ᴧ)
             if m:
                 snippet['abbr'] = m.group(1)
                 continue
 
-            m = re.search('^alias\s+(\S+)', line)
+            m = re.search('^alias\s+(\S+)', ᴧ)
             if m:
                 snippet['alias'] = m.group(1)
                 continue
 
-            m = re.search("^regexp\s+'([^']+)'", line)
+            m = re.search("^regexp\s+'([^']+)'", ᴧ)
             if m:
                 snippet['regexp'] = m.group(1)
                 continue
 
-            m = re.search('^options\s+(\S+)', line)
+            m = re.search('^options\s+(\S+)', ᴧ)
             if m:
                 for option in m.group(1).split(' '):
                     snippet['options'][option] = True
                 continue
 
-            m = re.search('^\s+(.*)$', line)
+            m = re.search('^\s+(.*)$', ᴧ)
             if m:
-                return 𝚵.parse_text(snippet)
+                return 𝚵.parse_text(snippet, ᴧ, ᴧ̲)
 
             # Error
             break
@@ -81,39 +68,44 @@ class Parser:
         # Error
         return {}
 
-    def parse_text(𝚵, snippet):
-        text_linenr = 0
-        while 𝚵.linenr < 𝚵.line_max:
-            line = 𝚵.lines[𝚵.linenr]
-            m = re.search('^\s+(.*)$', line)
+    def parse_text(𝚵, snippet, ᴧ, ᴧ̲):
+        text_ᴧnr = 0
+        for ᴧ in itertools.chain(iter([ᴧ]), ᴧ̲):
+            print(ᴧ)
+            print(type(ᴧ))
+            print(type(ᴧ))
+            print(type(ᴧ))
+            print(ᴧ)
+            print(ᴧ)
+            print(ᴧ)
+            m = re.search('^\s+(.*)$', ᴧ)
             if not m:
                 return snippet
 
             # Substitute tabstops
-            line = m.group(1)
+            ᴧ = m.group(1)
             while 1:
-                [tabstop, line] = 𝚵.parse_tabstop(line, text_linenr)
+                [tabstop, ᴧ] = 𝚵.parse_tabstop(ᴧ, text_ᴧnr)
                 if not tabstop:
                     break
 
                 snippet['tabstops'].append(tabstop)
 
-            snippet['text'] += line
-            𝚵.linenr += 1
-            text_linenr += 1
+            snippet['text'] += ᴧ
+            text_ᴧnr += 1
         return snippet
 
-    def parse_tabstop(𝚵, line, text_linenr):
-        m = re.search('\${(\d+)}', line)
+    def parse_tabstop(𝚵, ᴧ, text_ᴧnr):
+        m = re.search('\${(\d+)}', ᴧ)
         if not m:
-            return [{}, line]
+            return [{}, ᴧ]
 
         return [
             {
                 'number': int(m.group(1)),
-                'row': text_linenr,
+                'row': text_ᴧnr,
                 'col': m.start(),
                 'default': '',
             },
-            re.sub('\${(\d+)}', '', line, count=1)
+            re.sub('\${(\d+)}', '', ᴧ, count=1)
         ]
