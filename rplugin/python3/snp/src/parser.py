@@ -18,14 +18,14 @@ class Parser:
                 # Error
                 return {}
 
-            snippet = 𝚵.parse_one_snippet(ᴧ, ᴧ̲)
+            snippet = 𝚵.parseSnippet(ᴧ, ᴧ̲)
             if not snippet:
                 # Error
                 return {}
             snp̲[snippet['trigger']] = snippet
         return snp̲
 
-    def parse_one_snippet(𝚵, ᴧ, ᴧ̲):
+    def parseSnippet(𝚵, ᴧ, ᴧ̲):
         m = re.search('^\s*snippet\s+(.*)$', ᴧ)
         if not m:
             return {}
@@ -38,11 +38,6 @@ class Parser:
 
         # Parse the next line
         for ᴧ in ᴧ̲:
-            m = re.search('^abbr\s+(\S+)', ᴧ)
-            if m:
-                snippet['abbr'] = m.group(1)
-                continue
-
             m = re.search('^alias\s+(\S+)', ᴧ)
             if m:
                 snippet['alias'] = m.group(1)
