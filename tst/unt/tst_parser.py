@@ -23,7 +23,6 @@ snippet    bar
 
     test_snippet3 = """
 snippet    foo
-abbr       bar
 alias      baz
 regexp     '^% '
 options    word
@@ -64,7 +63,6 @@ snippet    foo
     assert parser.parse(test_snippet3) == {
         'foo': {
             'trigger': 'foo',
-            'abbr': 'bar',
             'alias': 'baz',
             'regexp': '^% ',
             'options': {'word': True},

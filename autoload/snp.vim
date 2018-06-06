@@ -14,5 +14,5 @@ function! snp#expand()
     endif
     let line = snp#preTrigger()
     let a = SNP_expand(line)
-    echo a
+    " echo a
 endfunction
