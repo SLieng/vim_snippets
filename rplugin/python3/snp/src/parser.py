@@ -71,13 +71,6 @@ class Parser:
     def parse_text(𝚵, snippet, ᴧ, ᴧ̲):
         text_ᴧnr = 0
         for ᴧ in itertools.chain(iter([ᴧ]), ᴧ̲):
-            print(ᴧ)
-            print(type(ᴧ))
-            print(type(ᴧ))
-            print(type(ᴧ))
-            print(ᴧ)
-            print(ᴧ)
-            print(ᴧ)
             m = re.search('^\s+(.*)$', ᴧ)
             if not m:
                 return snippet
