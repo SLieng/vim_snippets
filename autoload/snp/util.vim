@@ -11,6 +11,7 @@ function! snp#util#_get_cur_text() abort
         \      matchstr(getline('.'),
         \         '^.*\%' . col('.') . 'c' . (mode() ==# 'i' ? '' : '.'))
 endfunction
+
 function! snp#util#_get_next_text() abort "{{{
   return getline('.')[len(snp#util#_get_cur_text()) :]
 endfunction"}}}

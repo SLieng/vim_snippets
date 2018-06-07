@@ -7,6 +7,7 @@ import PYL
 from snp.src.Basicᕵ import Basicᕵ
 
 import LZL
+import LVL
 
 import re
 
@@ -33,29 +34,22 @@ class ᗰ͈(metaclass=TTL.AllѵΣ):
     def expand(𝚵, ᖚ):
         ᴧ = 𝚵.Ѵ.current.line
         r, c = 𝚵.Ѵ.current.window.cursor
-        m = re.search('
-        
-        
+        #~ m = re.search('[^\W]', ᴧ[::-1])
+        m = re.search('\W+', ᴧ[::-1])
+        if m is None:
+            index = 0
+        else:
+            index = m.start()
+
+        claim = ᴧ[-index:]
+        if claim not in 𝚵.snp̲:
+            LZL.echo(𝚵.Ѵ, f'{claim} not in snp')
+            return False
+        else:
+            ᴧ̅ = ᴧ[:-index] + 𝚵.snp̲[claim]['text']
+            𝚵.Ѵ.current.line = ᴧ̅
+            λ = len(𝚵.snp̲[claim]['text']) - len(claim)
+            𝚵.Ѵ.current.window.cursor = (r, c + λ)
+            return True
 
         #~ LZL.echo(𝚵.Ѵ, str(cur))
-
-    #~ @neovim.function('snp#r#initialize', sync=False)
-    #~ def init_channel(self, args):
-        #~ self._vim.vars['snp#_channel_id'] = self._vim.channel_id
-        #~ self._snp = Deoppet(self._vim)
-
-#~ @neovim.plugin
-#~ class DeoppetHandlers(object):
-
-#~     @neovim.function('_snp_initialize', sync=False)
-#~     def init_channel(self, args):
-#~         self._vim.vars['snp#_channel_id'] = self._vim.channel_id
-#~         self._snp = Deoppet(self._vim)
-
-#~     @neovim.function('_snp_mapping', sync=True)
-#~     def mapping(self, args):
-#~         self._snp.mapping(args[0])
-
-#~     @neovim.function('_snp_event', sync=True)
-#~     def event(self, args):
-#~         self._snp.event(args[0])

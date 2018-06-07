@@ -1,9 +1,9 @@
 import sys
 print(sys.path)
-from snp.src.parser import Parser
+from snp.src.Basicᕵ import Basicᕵ
 
 def test_parse_success():
-    parser = Parser()
+    parser = Basicᕵ()
 
     test_snippet0 = """
 """
