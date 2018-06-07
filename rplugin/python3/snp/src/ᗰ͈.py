@@ -4,9 +4,11 @@ import TTL
 import PAL
 import PYL
 
-from snp.src.parser import Parser
+from snp.src.Basicᕵ import Basicᕵ
 
 import LZL
+
+import re
 
 snpѪ = PAL.ѫ͈('~/scr/snp')
 
@@ -18,7 +20,7 @@ class ᗰ͈(metaclass=TTL.AllѵΣ):
 
     def loadSnp̲(𝚵):
         𝚵.snp̲ = {}
-        𝚵.parser = Parser()
+        𝚵.parser = Basicᕵ()
         for ѫ in PYL.file(snpѪ):
             if ѫ.ƨ.endswith('bak'):
                 continue
@@ -27,14 +29,20 @@ class ᗰ͈(metaclass=TTL.AllѵΣ):
                 𝚵.snp̲.update(𝚵.parser.parse(ӻ.read()))
 
         LZL.echo(𝚵.Ѵ, 𝚵.snp̲)
-        #~ 𝚵.Ѵ.out_write(str(𝚵.snp̲))
+
+    def expand(𝚵, ᖚ):
+        ᴧ = 𝚵.Ѵ.current.line
+        r, c = 𝚵.Ѵ.current.window.cursor
+        m = re.search('
+        
+        
+
+        #~ LZL.echo(𝚵.Ѵ, str(cur))
 
     #~ @neovim.function('snp#r#initialize', sync=False)
     #~ def init_channel(self, args):
         #~ self._vim.vars['snp#_channel_id'] = self._vim.channel_id
         #~ self._snp = Deoppet(self._vim)
-
-#~ from src.snp import Deoppet
 
 #~ @neovim.plugin
 #~ class DeoppetHandlers(object):
