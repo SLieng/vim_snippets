@@ -3,8 +3,9 @@ import re
 import itertools
 
 import PLL
+import PPL
 
-class Parser:
+class Snpᕵ(PPL.ᕵ͈):
 
     def parse(𝚵, c):
         ᴧ̲ = PLL.Ҁ͈ᴧ̲(c)
