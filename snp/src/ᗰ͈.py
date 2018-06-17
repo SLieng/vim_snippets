@@ -1,19 +1,16 @@
-import neovim
+import VMX
 
 import TTL
-import PAL
-import PYL
+import PAL, PYL
+import LZL, LVL
 
 from snp.src.Basicᕵ import Basicᕵ
-
-import LZL
-import LVL
 
 import re
 
 snpѪ = PAL.ѫ͈('~/scr/snp')
 
-@neovim.plugin
+@VMX.plugin
 class ᗰ͈(metaclass=TTL.AllѵΣ):
 
     def __init__(𝚵, Ѵ):
@@ -22,7 +19,7 @@ class ᗰ͈(metaclass=TTL.AllѵΣ):
     def loadSnp̲(𝚵):
         𝚵.snp̲ = {}
         𝚵.parser = Basicᕵ()
-        for ѫ in PYL.file(snpѪ):
+        for ѫ in PYL.ӻѫ(snpѪ):
             if ѫ.ƨ.endswith('bak'):
                 continue
             LZL.echom(𝚵.Ѵ, ѫ.ƨ)
